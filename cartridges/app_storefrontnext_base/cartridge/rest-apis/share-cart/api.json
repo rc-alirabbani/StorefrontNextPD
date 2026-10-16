@@ -1,0 +1,6 @@
+{
+  "endpoints": [
+    { "endpoint": "createShareToken", "schema": "schema.yaml", "implementation": "script" },
+    { "endpoint": "getSharedCart",    "schema": "schema.yaml", "implementation": "script" }
+  ]
+}

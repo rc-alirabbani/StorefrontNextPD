@@ -1,0 +1,14 @@
+{
+    "name": "Contact Us Page",
+    "description": "Static contact information page.",
+    "arch_type": "headless",
+    "region_definitions": [
+        {
+            "id": "main",
+            "name": "Main Content Region",
+            "max_components": 10
+        }
+    ],
+    "supported_aspect_types": [],
+    "route": "/:siteId/:localeId/contact"
+}

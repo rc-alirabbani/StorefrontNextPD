@@ -1,0 +1,24 @@
+{
+    "name": "My Page",
+    "description": "Custom landing page with hero, feature cards, and CTA sections.",
+    "arch_type": "headless",
+    "region_definitions": [
+        {
+            "id": "hero",
+            "name": "Hero Region",
+            "max_components": 1
+        },
+        {
+            "id": "features",
+            "name": "Features Region",
+            "max_components": 6
+        },
+        {
+            "id": "cta",
+            "name": "CTA Region",
+            "max_components": 1
+        }
+    ],
+    "supported_aspect_types": [],
+    "route": "/:siteId/:localeId/my-page"
+}

@@ -1,0 +1,23 @@
+{
+    "name": "Storefront Page",
+    "description": "A Storefront Page Type",
+    "arch_type": "headless",
+    "region_definitions": [
+        {
+            "id": "headerbanner",
+            "name": "Header Banner Region",
+            "max_components": 1
+        },
+        {
+            "id": "main",
+            "name": "Main Region",
+            "component_type_exclusions": [
+                {
+                    "type_id": "commerce_assets.campaignBanner"
+                }
+            ]
+        }
+    ],
+    "supported_aspect_types": ["page"],
+    "route": "/:siteId/:localeId/page/:pageId"
+}

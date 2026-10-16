@@ -1,0 +1,115 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: share-cart
+  description: Generate a shareable link for the current shopper basket, and retrieve a basket by share token.
+
+components:
+  securitySchemes:
+    ShopperToken:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://{shortCode}.api.commercecloud.salesforce.com/shopper/auth/v1/organizations/{organizationId}/oauth2/token
+          scopes:
+            c_share_cart: Access share-cart API
+
+  schemas:
+    ShareCartResponse:
+      type: object
+      required: [shareToken, shareUrl, expiresAt]
+      properties:
+        shareToken:
+          type: string
+          description: Opaque token that identifies the shared basket
+        shareUrl:
+          type: string
+          description: Full shareable URL the shopper can copy
+        expiresAt:
+          type: string
+          format: date-time
+          description: ISO-8601 expiry timestamp
+
+    SharedBasket:
+      type: object
+      required: [basketId, productItems]
+      properties:
+        basketId:
+          type: string
+        productItems:
+          type: array
+          items:
+            type: object
+            properties:
+              productId:  { type: string }
+              productName: { type: string }
+              quantity:   { type: integer }
+              price:      { type: number }
+
+    ErrorResponse:
+      type: object
+      required: [type, title]
+      properties:
+        type:    { type: string }
+        title:   { type: string }
+        detail:  { type: string }
+
+paths:
+  /baskets/{basketId}/share:
+    post:
+      summary: Create a share token for the given basket
+      operationId: createShareToken
+      parameters:
+        - in: query
+          name: siteId
+          required: true
+          schema: { type: string, minLength: 1 }
+        - in: path
+          name: basketId
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Share token created
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ShareCartResponse' }
+        '404':
+          description: Basket not found
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+      security:
+        - ShopperToken: [c_share_cart]
+
+  /share/{shareToken}:
+    get:
+      summary: Retrieve basket contents by share token
+      operationId: getSharedCart
+      parameters:
+        - in: query
+          name: siteId
+          required: true
+          schema: { type: string, minLength: 1 }
+        - in: path
+          name: shareToken
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Shared basket contents
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/SharedBasket' }
+        '404':
+          description: Token not found or expired
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+        '410':
+          description: Share token has expired
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+      security:
+        - ShopperToken: [c_share_cart]

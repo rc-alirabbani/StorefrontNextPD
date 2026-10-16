@@ -1,0 +1,63 @@
+{
+    "name": "Promo Banner",
+    "description": "Slim promotional strip for site-wide announcements, sale messaging, or time-sensitive offers. Supports an optional CTA link and a dismiss button.",
+    "group": "Content",
+    "arch_type": "headless",
+    "region_definitions": [],
+    "attribute_definition_groups": [
+        {
+            "id": "promoBanner",
+            "name": "Promo Banner",
+            "description": "Slim promotional strip for site-wide announcements, sale messaging, or time-sensitive offers. Supports an optional CTA link and a dismiss button.",
+            "attribute_definitions": [
+                {
+                    "id": "message",
+                    "name": "Message",
+                    "type": "string",
+                    "required": true,
+                    "description": "Field: message"
+                },
+                {
+                    "id": "linkText",
+                    "name": "Link Text",
+                    "type": "string",
+                    "required": false,
+                    "description": "Field: linkText"
+                },
+                {
+                    "id": "linkUrl",
+                    "name": "Link URL",
+                    "type": "url",
+                    "required": false,
+                    "description": "Field: linkUrl"
+                },
+                {
+                    "id": "backgroundColor",
+                    "name": "Background Color",
+                    "type": "enum",
+                    "required": false,
+                    "description": "Field: backgroundColor",
+                    "values": ["primary", "secondary", "accent", "muted"],
+                    "default_value": "primary"
+                },
+                {
+                    "id": "textColor",
+                    "name": "Text Color",
+                    "type": "enum",
+                    "required": false,
+                    "description": "Field: textColor",
+                    "values": ["light", "dark"],
+                    "default_value": "light"
+                },
+                {
+                    "id": "dismissible",
+                    "name": "Dismissible",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Allow visitors to close the banner",
+                    "default_value": false
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "name": "Custom page",
+    "description": "A standalone Page Designer page addressed by its page ID.",
+    "arch_type": "headless",
+    "attribute_definitions": [
+        {
+            "id": "pageId",
+            "name": "Page",
+            "description": "The Page Designer page to render at this route.",
+            "type": "page",
+            "required": true
+        }
+    ],
+    "supported_object_types": []
+}
