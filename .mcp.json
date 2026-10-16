@@ -1,0 +1,25 @@
+{
+  "mcpServers": {
+    "b2c-dx-mcp": {
+      "type": "stdio",
+      "command": "b2c-dx-mcp",
+      "timeout": 60000,
+      "args": [
+        "--allow-non-ga-tools",
+        "--project-directory", "C:/b2c-shopper-agents/my-next-storefront",
+        "--server", "zzkc-009.dx.commercecloud.salesforce.com",
+        "--code-version", "ver_sharecart",
+        "--client-id", "245e0e4d-611b-40a7-8f2b-a6a4037e3717",
+        "--client-secret", "yzt1cO3bN7pQWK1",
+        "--short-code", "kv7kzm78"
+      ],
+      "env": {
+        "SFCC_SERVER": "zzkc-009.dx.commercecloud.salesforce.com",
+        "SFCC_SHORTCODE": "kv7kzm78",
+        "SFCC_CLIENT_ID": "245e0e4d-611b-40a7-8f2b-a6a4037e3717",
+        "SFCC_CLIENT_SECRET": "yzt1cO3bN7pQWK1",
+        "SFCC_CODE_VERSION": "ver_sharecart"
+      }
+    }
+  }
+}

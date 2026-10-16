@@ -1,0 +1,9 @@
+allowBuilds:
+  '@swc/core': true
+  '@tailwindcss/oxide': true
+  core-js: true
+  esbuild: true
+  msw: true
+  protobufjs: true
+  unrs-resolver: true
+  yarn: true
